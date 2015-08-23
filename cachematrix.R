@@ -3,7 +3,7 @@
 ## if Matrix has changed it calculates inverse and cache value
 ## If Matrix has not changed it gets cached value and display
 
-## Write a short comment describing this function
+## This function return a list with function to set and get matrix and its inverse
 
 makeCacheMatrix <- function(x = matrix()) {
   inverse<-NULL
@@ -19,19 +19,18 @@ makeCacheMatrix <- function(x = matrix()) {
        getinverse = getinverse)
 }
 
-## Write a short comment describing this function
+## This functions returns matrix inverse. It first checks if inverse is cached and matrix
+# has not changed. Recomputes inverse
+## if inverse does not exist or if matrix has changed
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+
   inverse<-x$getinverse()
- # return(x$get())
+
   if(!identical(c,x$get())){ # If statement is checking if matrix has changed
-  #    return(c)
-  #    message("inside")
-      x <-makeCacheMatrix(c)
+      x <<-makeCacheMatrix(c)
       x$set(c)
       data<-x$get()
-  #    return(data)
       inverse<-solve(data)
       x$setinverse(inverse)
       return(inverse)
