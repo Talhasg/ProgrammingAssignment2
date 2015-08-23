@@ -28,14 +28,17 @@ cacheSolve <- function(x, ...) {
   inverse<-x$getinverse()
 
   if(!identical(c,x$get())){ # If statement is checking if matrix has changed
-      x <<-makeCacheMatrix(c)
+      message("inside")
+      x<<-makeCacheMatrix(c)
       x$set(c)
       data<-x$get()
       inverse<-solve(data)
       x$setinverse(inverse)
       return(inverse)
   }
+
   if(!is.null(inverse)){
+      inverse<-x$getinverse()
       message("getting cached matrix inverse")
       return(inverse)
   }  
